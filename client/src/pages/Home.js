@@ -5,10 +5,10 @@ import "./Home.css";
 import logo from "./logo.svg";
 
 export function Home() {
-	const [message, setMessage] = useState("Loading...");
+	const [cohorts, setCohorts] = useState([]);
 
 	useEffect(() => {
-		fetch("/api")
+		fetch("/api/cohorts")
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error(res.statusText);
@@ -16,7 +16,7 @@ export function Home() {
 				return res.json();
 			})
 			.then((body) => {
-				setMessage(body.message);
+				setCohorts(body);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -33,9 +33,20 @@ export function Home() {
 					alt="Just the React logo"
 				/>
 				<h1 className="message" data-qa="message">
-					{message}
+					Cohorts
 				</h1>
 				<Link to="/about/this/site">About</Link>
+				{console.log(cohorts)}
+				{!!cohorts.length && (
+          <ul>
+            {cohorts.map((cohorts) => (
+              <li key={cohorts.id}>
+                <h2>{cohorts.name}</h2>
+                <p>{cohorts.start_date}</p>
+              </li>
+            ))}
+          </ul>
+        )}
 			</div>
 		</main>
 	);
