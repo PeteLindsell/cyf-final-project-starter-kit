@@ -33,7 +33,7 @@ export function Home() {
 					alt="Just the React logo"
 				/>
 				<h1 className="message" data-qa="message">
-					Cohorts
+					Cohorts test trigger build 🚀
 				</h1>
 				<Link to="/about/this/site">About</Link>
 				{console.log(cohorts)}

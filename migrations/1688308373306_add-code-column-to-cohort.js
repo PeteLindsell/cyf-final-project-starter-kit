@@ -5,7 +5,7 @@ exports.shorthands = undefined;
 exports.up = (pgm) => {
   pgm.sql( `
     ALTER TABLE public.cohorts 
-    ADD COLUMN code VARCHAR NOT NULL;
+    ADD COLUMN code VARCHAR;
   `);
 };
 
